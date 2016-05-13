@@ -1,0 +1,12 @@
+vailable Controls        Current Value   Range
+------------------        -------------   -----
+Brightness                100 (31%)       30 - 255
+Contrast                  4               0 - 10
+Saturation                65 (32%)        0 - 200
+White Balance Temperature, Auto True            True | False
+Power Line Frequency      60 Hz           Disabled | 50 Hz | 60 Hz
+White Balance Temperature 4432 (22%)      2800 - 10000
+Sharpness                 25 (50%)        0 - 50
+Backlight Compensation    0               0 - 10
+Adjusting resolution from 384x288 to 352x288.
+

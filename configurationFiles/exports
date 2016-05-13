@@ -1,2 +1,4 @@
 ## An example entry for the NFS host computer
+## This entry would be in the host computers
+## exports file, locateds at /etc/exports
 /home/karl/testDir 192.168.2.1/24(rw,no_root_squash,async)
