@@ -17,3 +17,11 @@ sudo cp configurationFiles/fstab /etc/fstab
 
 # Install programs for taking pictures
 sudo apt-get install motion fswebcam
+
+# Install the crontab to automatically take pictures
+#
+#	*** Don't forget to edit the crontab to 
+# 	Reflect the location of your takeImage.sh
+#
+sudo crontab configurationFiles/crontab
+
