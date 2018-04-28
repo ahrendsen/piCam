@@ -23,17 +23,27 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	# A unique ID for the picture that will comprise part of the filename.
 	PICID=${SCSTRING}_${DATE}
 
+	# Attempts to contact the remote host computer, if no response, save to 
+	# local directory.
+	ping -W 1 -c 1 dell > /dev/null 2>&1
+	EXITSTATUS=$?
+	#EXITSTATUS=1
 	# The base directory where the folders to store the pictures will be made.
-	#BASEDIR=/home/pi/testShare
-	BASEDIR=/networkShare/${MONTH}
-	sudo mkdir -p $BASEDIR
+	BASEDIR=/home/pi/testShare/${MONTH}
+	if [ $EXITSTATUS -gt 0 ]; then 
+		mkdir -p $BASEDIR
+	else
+		BASEDIR=/networkShare/${MONTH}
+		mkdir -p $BASEDIR
+	fi
+	
 
 	# The number of images to skip before actually taking the picture.
 	# This helps the camera to adjust to sudden harsh light changes. 
 	# For applications that take images infrequently (every minute),
 	# a large number (around 20) will be best. For more frequent picture
 	# taking, a value of 4 or so will do.
-	SKIPCOUNT=10
+	SKIPCOUNT=20
 	SKIPSET="-S $SKIPCOUNT"
 
 	# The number of frames to grab to compose the image
@@ -53,9 +63,11 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	# outdoors. Set these strings to empty to disable.
 	#
 	# For a simple setup with a single incandescent lightbulb very close
-	# to the subject, a value of 80 seems to work best. 
+	# to the subject, a value of 80 seems to work best. For monitoring
+	# The growth of plant indoors with a bright flourescent bulb, 50 seems
+	# to work well.
 	# Available Values: 30-255
-	BR=150
+	BR=50
 	BRIGHTSET="-s brightness=$BR"
 
 	# Contrast
@@ -75,10 +87,11 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	# The default was 25 (out of 50) and though there wasn't much
 	# difference between the photos except for the one taken at the lowest
 	# sharpness I thought the higher values looked a little better.
-	SH=40
+	SH=25
 	SHARPSET="-s sharpness=$SH"
 
-	SETTINGSBOTH="-q --rotate 180 -r 1280x720 --no-banner $FRAMESET $SKIPSET $BRIGHTSET $CONTRASTSET $SATSET $SHARPSET"
+	ROTATE180="--rotate 180"
+	SETTINGSBOTH="-q -r 1280x720 --no-banner $FRAMESET $SKIPSET $BRIGHTSET $CONTRASTSET $SATSET $SHARPSET"
 	SETTINGS1="-d /dev/video0"
 	SETTINGS2="-d /dev/video1"
 
@@ -91,4 +104,6 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 
 		fswebcam -d /dev/$CAMNAME $SETTINGSBOTH $BASEDIR/${PICID}.jpg
 	fi
+elif [ "$CAMCOUNT" -eq 0 ]; then 
+	echo "Error: camera not detected"
 fi

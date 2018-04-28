@@ -7,5 +7,3 @@ ssh-keygen -t rsa
 # Make sure to edit the username and password below to 
 #   appropriately describe your system. 
 cat ~/.ssh/id_rsa.pub | ssh pi@pi "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
-
-

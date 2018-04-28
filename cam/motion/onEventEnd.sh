@@ -15,10 +15,10 @@
 #                            (an integer between 0 and 9)
 #
 
-ENDINGFILE="/home/karl/piCam/cam/motion/bubbleCounts/ending"
+ENDINGFILE="bubbleCounts/ending"
 declare -i ENDING=$(cat $ENDINGFILE)
 if [[ $ENDING -eq 0 ]]; then
-    BUBBLECOUNTFILE="/home/karl/piCam/cam/motion/bubbleCounts/bubbleCount$1"
+    BUBBLECOUNTFILE="bubbleCounts/bubbleCount$1"
     DATE=$(date +"%d_%m_%Y")
     declare -i BUBBLECOUNT=$(cat $BUBBLECOUNTFILE)
     echo "$DATE	$BUBBLECOUNT" >> "bubbleCounts/countRecords$1"

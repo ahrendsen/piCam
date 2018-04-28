@@ -25,4 +25,4 @@
 #
 #
 # m h  dom mon dow   command
-0 */3 * * * sudo bash /home/pi/piCam/cam/img/takeImage.sh
+0 * * * * sudo bash /home/pi/piCam/cam/img/takeImage.sh
