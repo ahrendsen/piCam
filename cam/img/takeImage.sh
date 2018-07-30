@@ -67,7 +67,7 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	# The growth of plant indoors with a bright flourescent bulb, 50 seems
 	# to work well.
 	# Available Values: 30-255
-	BR=50
+	BR=100
 	BRIGHTSET="-s brightness=$BR"
 
 	# Contrast
@@ -92,8 +92,8 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 
 	ROTATE180="--rotate 180"
 	SETTINGSBOTH="-q -r 1280x720 --no-banner $FRAMESET $SKIPSET $BRIGHTSET $CONTRASTSET $SATSET $SHARPSET"
-	SETTINGS1="-d /dev/video0"
-	SETTINGS2="-d /dev/video1"
+	SETTINGS1="-d /dev/video0 $ROTATE180"
+	SETTINGS2="-d /dev/video1 $BRIGHTSET"
 
 	if [ "$CAMCOUNT" -eq 2 ]; then
 		fswebcam $SETTINGSBOTH $SETTINGS1 $BASEDIR/${PICID}_0.jpg
