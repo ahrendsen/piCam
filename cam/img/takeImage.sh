@@ -2,6 +2,7 @@
 
 #Record the number of cameras that are connected to the computer
 CAMCOUNT=$(ls /dev | grep -c video)
+BASEDIR=/home/pi/RbPics/${MONTH}
 
 if [ "$CAMCOUNT" -gt 0 ]; then
 	#Get the date in a string format to be used in the filename
@@ -29,7 +30,6 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	EXITSTATUS=$?
 	#EXITSTATUS=1
 	# The base directory where the folders to store the pictures will be made.
-	BASEDIR=/home/pi/testShare/${MONTH}
 	if [ $EXITSTATUS -gt 0 ]; then 
 		mkdir -p $BASEDIR
 	else

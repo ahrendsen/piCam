@@ -1,10 +1,15 @@
 #/bin/bash
 
-ITER=0
-PICDIR=/home/karl/testDir/04
+# Set this to the directory containing the images to compile
+PICDIR=/home/pi/RbPics/08
+# Leave this blank if only using one camera
+CAMERAEXTENSION=""
 
-for f in ${PICDIR}/*_0.jpg; do 
+# An iteration variable.
+ITER=0
+for f in ${PICDIR}/*${CAMERAEXTENSION}.jpg; do 
 	NAME=$(printf "%05d" ${ITER})
-	sudo cp "${f}" "${PICDIR}/${NAME}.jpg"
-	((ITER++)) 
+	mkdir -p "${PICDIR}/renamed"
+	sudo cp "${f}" "${PICDIR}/renamed/${NAME}.jpg"
+	ITER=$((ITER+1)) 
 done
