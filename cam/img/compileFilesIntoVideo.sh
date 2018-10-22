@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Before a video can be compiled, you must rename the files to be in an integer ascending order.
+# run the script renameFiles.sh before running this script.
+
 # Set the directory where your pictures are stored.
 PICDIR=/home/pi/RbPics/08
 # Directory where you want the video to be saved. Make sure it already exists. 

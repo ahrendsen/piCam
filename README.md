@@ -2,7 +2,7 @@
 
 piCam is a collection of bash scripts that are used to operate webcams using a raspberry pi.
 
-There are two aspects to this project: 1. Timelapse photos and 2. Motion detecting camera.
+There are three aspects to this project: 1. Timelapse photos and 2. Motion detecting camera. and 3. Video monitor.
 
 # Timelapse photos
 This function involves collecting timelapse photos and concatenate them into a stop-motion film. 
@@ -14,3 +14,10 @@ To compile the photos into a video, take the following steps. First run the "ren
 
 # Motion detecting camera
 This function was intended to count the number of instances of motion in a very small region. I wanted to count the number of bubbles that went through an airlock in my brewing setup. I also hope to use it to capture images of lightning in the future. 
+
+# Video monitor
+
+Video monitoring is provided by dmxwebcam, not written or maintained by me. Search google for more information on downloading and installing this program.
+Once installed, the dmxwebcam script should be put in this directory, and then you can view the webcam output with the command.
+
+	./dmxwebcam

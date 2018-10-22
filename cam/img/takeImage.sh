@@ -2,7 +2,6 @@
 
 #Record the number of cameras that are connected to the computer
 CAMCOUNT=$(ls /dev | grep -c video)
-BASEDIR=/home/pi/RbPics/${MONTH}
 
 if [ "$CAMCOUNT" -gt 0 ]; then
 	#Get the date in a string format to be used in the filename
@@ -13,6 +12,9 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	DAY=$(date +"%d")
 	#Get the hour of the day for the same reason.
 	HOUR=$(date +"%H")
+
+	BASEDIR=/home/pi/RbPics
+	DATEFOLDERS=${MONTH}/${DAY}
 
 	# Pulls a number stored in a file which represents the number of 
 	# times the system has been powered on. This should prevent
@@ -31,10 +33,10 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	#EXITSTATUS=1
 	# The base directory where the folders to store the pictures will be made.
 	if [ $EXITSTATUS -gt 0 ]; then 
-		mkdir -p $BASEDIR
+		mkdir -p $BASEDIR/$DATEFOLDERS
 	else
-		BASEDIR=/networkShare/${MONTH}
-		mkdir -p $BASEDIR
+		BASEDIR=/networkShare
+		mkdir -p $BASEDIR/$DATEFOLDERS
 	fi
 	
 
@@ -96,14 +98,17 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	SETTINGS2="-d /dev/video1 $BRIGHTSET"
 
 	if [ "$CAMCOUNT" -eq 2 ]; then
-		fswebcam $SETTINGSBOTH $SETTINGS1 $BASEDIR/${PICID}_0.jpg
-		fswebcam $SETTINGSBOTH $SETTINGS2 $BASEDIR/${PICID}_1.jpg
+		fswebcam $SETTINGSBOTH $SETTINGS1 $BASEDIR/$DATEFOLDERS/${PICID}_0.jpg
+		fswebcam $SETTINGSBOTH $SETTINGS2 $BASEDIR/$DATEFOLDERS/${PICID}_1.jpg
 	elif [ "$CAMCOUNT" -eq 1 ]; then 
 		#Record the name of the first attached camera
 		CAMNAME=$(ls /dev | grep video)
 
-		fswebcam -d /dev/$CAMNAME $SETTINGSBOTH $BASEDIR/${PICID}.jpg
+		fswebcam -d /dev/$CAMNAME $SETTINGSBOTH $BASEDIR/$DATEFOLDERS/${PICID}.jpg
 	fi
+
+	# The following lines will upload the pictures automatically to GoogleDrive
+	rclone copy $BASEDIR/$DATEFOLDERS googleRaspi:BGTestPics/$DATEFOLDERS
 elif [ "$CAMCOUNT" -eq 0 ]; then 
 	echo "Error: camera not detected"
 fi
