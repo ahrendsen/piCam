@@ -17,7 +17,8 @@ This function was intended to count the number of instances of motion in a very 
 
 # Video monitor
 
-Video monitoring is provided by dmxwebcam, not written or maintained by me. Search google for more information on downloading and installing this program.
+Video monitoring is provided by dmxwebcam, not written or maintained by me. Visit https://github.com/AndrewFromMelbourne/dmxwebcam for more information on this project, including installation instructions.
+
 Once installed, the dmxwebcam script should be put in this directory, and then you can view the webcam output with the command.
 
 	./dmxwebcam
