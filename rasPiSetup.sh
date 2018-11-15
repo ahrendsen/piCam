@@ -1,8 +1,10 @@
+#git clone https://github.com/ahrendsen/picam
 sudo apt-get install vim
 sudo apt-get install emacs
 sudo apt-get install git
+sudo apt-get install ssmtp
 sudo apt-get install mutt
-git clone https://github.com/ahrendsen/picam
+sudo apt-get install gpgsm
 sudo apt-get install fswebcam
 touch /home/pi/.startCount
 git clone https://github.com/andrewfrommelbourne/dmxwebcam
@@ -38,3 +40,21 @@ git config --global user.name "Karl Ahrendsen"
 #	export EDITOR /usr/bin/vim
 #
 ### So that the default editor will be vim instead of nano.
+
+### Enable sending email on your device. Create a file called ".muttrc"
+#   In the home directory and put in the following contents.
+#
+#  #About Me
+#  set from = "rubidium.pi@gmail.com"
+#  set realname = "Karl Ahrendsen"
+#  
+#  # My credentials
+#  set smtp_url = "smtp://rubidium.pi@gmail.com@smtp.gmail.com:587/"
+#  set smtp_pass = "yourPassword"
+#
+###
+
+### Setup the system to email you its IP when it starts up if its connected
+#   to a network. edit the file /etc/rc.local to include a reference to 
+#   the emailIP.sh script located in the base directory.
+###

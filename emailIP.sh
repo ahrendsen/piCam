@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo "IP: $(sudo hostname -I)\n" | sudo mutt -s "IR Raspi" "$1 $2"
+echo "IP: $(sudo hostname -I)\n" | mutt -s "Raspberry Pi IP Address" "$1"
