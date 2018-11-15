@@ -52,7 +52,7 @@ git config --global user.name "Karl Ahrendsen"
 #  set smtp_url = "smtp://rubidium.pi@gmail.com@smtp.gmail.com:587/"
 #  set smtp_pass = "yourPassword"
 #
-###
+### You'll probably also want to copy this file to root's home directory
 
 ### Setup the system to email you its IP when it starts up if its connected
 #   to a network. edit the file /etc/rc.local to include a reference to 
