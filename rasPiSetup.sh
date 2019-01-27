@@ -2,10 +2,13 @@
 sudo apt-get install vim
 sudo apt-get install emacs
 sudo apt-get install git
-sudo apt-get install ssmtp
-sudo apt-get install mutt
-sudo apt-get install gpgsm
-sudo apt-get install fswebcam
+sudo apt-get install ssmtp # For email sending (not sure if I need both mutt and ssmtp)
+sudo apt-get install mutt # For email sending
+sudo apt-get install gpgsm # For ???
+sudo apt-get install libav-tools # For video compilation (avconv)
+sudo apt-get install fswebcam # For automated picture taking
+sudo apt-get install rclone # For automatic picture uploading to cloud storage.
+
 touch /home/pi/.startCount
 git clone https://github.com/andrewfrommelbourne/dmxwebcam
 sudo apt-get install libbsd-dev
@@ -13,11 +16,12 @@ mkdir build
 cd build/
 sudo apt-get install cmake
 cmake ..
-git clone https://github.com/ahrendsen/RbControl
-sudo apt-get install wiringPi
+##git clone https://github.com/ahrendsen/RbControl
+
 git clone git://git.drogon.net/wiringPi
 cd wiringPi/
 ./build 
+
 sudo raspi-config
 ### In raspi-config
 #
@@ -28,16 +32,16 @@ sudo raspi-config
 #			Change the keyboard layout (104 key US keyboard)
 #	In Interfacing
 #		Change SPI to YES
-#		Chage SSH to YES
+#		Change SSH to YES
 #
 ###
-export EDITOR=/usr/bin/vim
+
 git config --global user.email "karl.ahrendsen@gmail.com"
 git config --global user.name "Karl Ahrendsen"
 
 ### Add the following to the .profile.
 #
-#	export EDITOR /usr/bin/vim
+#	export EDITOR=/usr/bin/vim
 #
 ### So that the default editor will be vim instead of nano.
 
@@ -55,6 +59,8 @@ git config --global user.name "Karl Ahrendsen"
 ### You'll probably also want to copy this file to root's home directory
 
 ### Setup the system to email you its IP when it starts up if its connected
-#   to a network. edit the file /etc/rc.local to include a reference to 
-#   the emailIP.sh script located in the base directory.
+#   to a network. 
+#
+#  Edit the file /etc/rc.local to include a reference to 
+#  the emailIP.sh script located in the base directory.
 ###

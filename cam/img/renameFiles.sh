@@ -1,7 +1,9 @@
 #/bin/bash
 
+MONTH=$(date +"%m" --date='yesterday')
+DAY=$(date +"%d" --date='yesterday')
 # Set this to the directory containing the images to compile
-PICDIR=/home/pi/RbPics/08
+PICDIR=/home/pi/RbPics/$MONTH/$DAY
 # Leave this blank if only using one camera
 CAMERAEXTENSION=""
 

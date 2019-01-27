@@ -107,8 +107,8 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 		fswebcam -d /dev/$CAMNAME $SETTINGSBOTH $BASEDIR/$DATEFOLDERS/${PICID}.jpg
 	fi
 
-	# The following lines will upload the pictures automatically to GoogleDrive
-	rclone copy $BASEDIR/$DATEFOLDERS googleRaspi:BGTestPics/$DATEFOLDERS
+	# The following lines will upload the pictures automatically to cloud storage
+	rclone copy $BASEDIR/$DATEFOLDERS unlbox:piCamPics/$DATEFOLDERS
 elif [ "$CAMCOUNT" -eq 0 ]; then 
 	echo "Error: camera not detected"
 fi
