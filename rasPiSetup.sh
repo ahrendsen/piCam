@@ -6,6 +6,7 @@ sudo apt-get install ssmtp # For email sending (not sure if I need both mutt and
 sudo apt-get install mutt # For email sending
 sudo apt-get install gpgsm # For ???
 sudo apt-get install libav-tools # For video compilation (avconv)
+sudo apt-get install ffmpeg # For gif compilation (ffmpeg)
 sudo apt-get install fswebcam # For automated picture taking
 sudo apt-get install rclone # For automatic picture uploading to cloud storage.
 
