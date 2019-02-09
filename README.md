@@ -8,7 +8,7 @@ There are three aspects to this project: 1. Timelapse photos and 2. Motion detec
 This function involves collecting timelapse photos and concatenate them into a stop-motion film. 
 
 For compiling timelapse photos into a video, you will need to install the following package for the program "avconv"
-	libav-tools
+ - libav-tools
 
 To compile the photos into a video, take the following steps. First run the "renameFiles.sh" script after editing the file to appropriately indicate where the pictures are stored and where you want them to be saved. Then, run the "compileFilesIntoVideo.sh" script, again, after editing to appropriately direct things. 
 
