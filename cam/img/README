@@ -1,0 +1,70 @@
+I'm going to keep notes here on different ways that the system can be configured.
+
+02/08/2019:
+I've just altered the crontab file to take 
+pictures every 30 seconds instead of every 
+5 minutes as I have been since I started 
+the project. Some rough calculations, we 
+were collecting 288 files a day, now we 
+will be collecting 10 times that,
+so 2,880 files a day. Previously, our daily 
+picture storage space was ~190 MB, so now
+we'll be closer to 2 GB per day. 
+
+This means that I'll need to build in some
+file management practices to keep the SD
+card from filling up completely and
+preventing more images from being stored. 
+This will consist of automatically deleting
+the oldest data folder, and I'll have
+to find the number of data folders that I
+can keep on the Pi at one time. 
+
+This also means that I'll need to write 
+scripts for downloading pictures from box 
+for the longer-term video compilations. Woo-hoo.
+
+I've already modified the rename files script
+to only pick up the pictures every 5 minutes
+for today's video that will be compiled later
+tonight. That consisted of changing the regular 
+expression to read in the files from accepting 
+all file names (*$CAMERAEXTENSION.jpg) to 
+selecting only file names with minutes that 
+end in 0 or 5 (*_*-[05]-*$CAMERAEXTENSION.jpg).
+
+In the future, I can use the old format to 
+grab all of the images, or modify the above
+to grab a smaller subset.
+
+_Working on Grabbing the oldest folder for deletion_
+This probably isn't the slickest way to get
+the job done, but it should work. 
+
+One can pass options to the program ls. 
+	-t indicates they should be sorted by
+		most recent modification time
+	-r indicates that they should be sorted in
+		reverse order
+	-1 indicates that the files should 
+		be listed one per line
+
+The command looks something like this:
+
+  ls -tr1
+
+By passing these three options in conjuction,
+we can have a list of starting with the oldest
+files and folders and working towards the newest. 
+Now we only want a portion of these, which is 
+where we get to implement pipes. We pipe the 
+output of the ls command to head, which only
+outputs the first few lines of the input. You
+can specify how few lines with the option -n. 
+So with
+
+  ls -tr1 | head -n 1
+
+We get the oldest modified file or folder. 
+
+
