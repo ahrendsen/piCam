@@ -1,9 +1,16 @@
 #!/bin/bash
 
-#Get the month to help separate all of the photos into dirs.
-MONTH=$(date +"%m" --date='yesterday')
-#Get the day of the month to help separate all of the photos into dirs.
-DAY=$(date +"%d" --date='yesterday')
+if [ $# -lt 1 ]; then
+	DATE='yesterday'
+	echo -e "\n\nNo argument supplied. Compiling yesterday's data\n\n"
+	sleep 5
+else
+	DATE=$1
+fi
+
+# Set the directory where your pictures are stored.
+MONTH=$(date +"%m" --date=$DATE)
+DAY=$(date +"%d" --date=$DATE)
 
 VIDDIR=/home/pi/RbVideos
 VIDEONAME="Autovideo_$MONTH-${DAY}_30fps.mp4"
