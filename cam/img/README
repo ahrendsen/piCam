@@ -68,3 +68,43 @@ So with
 We get the oldest modified file or folder. 
 
 
+_Working on compiling a week's worth of pictures_
+This isn't a huge change from what we're already 
+doing. Now all that we need to do is make another
+loop for going through the previous 7 days and put
+that into out current script, moving the iteration 
+variable $ITER outside of the first loop. The only
+difficult comes in identifying the previous 7 days.
+
+Since date has a natural language processing for
+processing the input when the day is specified, 
+we can use that. It's just a matter of finding 
+the syntax that works.
+
+The Syntax that works is "N days ago DATE" where
+N is the number of days that you want to compile
+and DATE is the date that you want to end on.
+One minor correction. Let's add in a time so that
+it will start and end at midnight.
+
+date --date="4 days ago 1/1/19 00:00"
+
+02/09/2019:
+
+I accidentally removed the files from 01/24 and 01/25 without first compiling videos for them and uploading them. These are 
+good candidates for working on my code to 
+download from dropbox and compile.
+
+
+Additionally, an issue started showing up where
+the pi is starting to run really slow and is 
+missing taking some pictures because of it. This 
+is an issue that only started showing up as I 
+logged into the pi and started deleting files,
+but even now that I'm done the issue persists. 
+
+For the time being, as I haven't yet sorted out
+auto removing files and compiling videos through box,
+I think it best to reduce the frequency of pictures 
+to the previous value to see if that helps.
+
