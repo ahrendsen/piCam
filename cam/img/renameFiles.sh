@@ -21,6 +21,6 @@ ITER=0
 for f in ${PICDIR}/*_*-*[05]-*${CAMERAEXTENSION}.jpg; do 
 	NAME=$(printf "%05d" ${ITER})
 	mkdir -p "${PICDIR}/renamed"
-	sudo cp "${f}" "${PICDIR}/renamed/${NAME}.jpg"
+	cp "${f}" "${PICDIR}/renamed/${NAME}.jpg"
 	ITER=$((ITER+1)) 
 done
