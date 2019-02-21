@@ -6,15 +6,18 @@ if [ $# -lt 1 ]; then
 	DATE='yesterday'
 	echo -e "\n\nNo argument supplied. Compiling yesterday's data\n\n"
 	sleep 5
+
+	# Set the directory where your pictures are stored.
+	MONTH=$(date +"%m" --date=$DATE)
+	DAY=$(date +"%d" --date=$DATE)
+
+	PICDIR=/home/pi/RbPics/$MONTH/$DAY/renamed
+	VIDEONAME="Autovideo_$MONTH-${DAY}_${FRAMERATEOUT}fps.mp4"
 else
-	DATE=$1
+	PICDIR=$1
+	VIDEONAME=$2
 fi
 
-# Set the directory where your pictures are stored.
-MONTH=$(date +"%m" --date=$DATE)
-DAY=$(date +"%d" --date=$DATE)
-
-PICDIR=/home/pi/RbPics/$MONTH/$DAY
 # Directory where you want the video to be saved. Make sure it already exists. 
 VIDDIR=/home/pi/RbVideos
 mkdir -p "${VIDDIR}"
@@ -23,6 +26,5 @@ mkdir -p "${VIDDIR}"
 FRAMERATEIN=30
 FRAMERATEOUT=$FRAMERATEIN
 # Set the name that you want your video to have. 
-VIDEONAME="Autovideo_$MONTH-${DAY}_${FRAMERATEOUT}fps.mp4"
 
-sudo avconv -f image2 -r $FRAMERATEIN -i ${PICDIR}/renamed/%05d.jpg -vf scale=480:270 -b:v 1M -r:v $FRAMERATEOUT -c:v mpeg4 -qp 0 -preset veryslow -an "${VIDDIR}/${VIDEONAME}"
+sudo avconv -f image2 -r $FRAMERATEIN -i ${PICDIR}/%05d.jpg -vf scale=480:270 -b:v 1M -r:v $FRAMERATEOUT -c:v mpeg4 -qp 0 -preset veryslow -an "${VIDDIR}/${VIDEONAME}"
