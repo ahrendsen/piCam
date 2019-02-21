@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DEBUG=1
+
 #Record the number of cameras that are connected to the computer
 CAMCOUNT=$(ls /dev | grep -c video)
 
@@ -15,6 +17,9 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 
 	BASEDIR=/home/pi/RbPics
 	DATEFOLDERS=${MONTH}/${DAY}
+
+	if [ "$DEBUG" -gt 0 ]; then echo "Date Obtained"
+	fi
 
 	# Pulls a number stored in a file which represents the number of 
 	# times the system has been powered on. This should prevent
@@ -97,6 +102,9 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	SETTINGS1="-d /dev/video0 $ROTATE180"
 	SETTINGS2="-d /dev/video1 $BRIGHTSET"
 
+	if [ "$DEBUG" -gt 0 ]; then echo "All Setup Complete, taking picture"
+	fi
+
 	if [ "$CAMCOUNT" -eq 2 ]; then
 		fswebcam $SETTINGSBOTH $SETTINGS1 $BASEDIR/$DATEFOLDERS/${PICID}_0.jpg
 		fswebcam $SETTINGSBOTH $SETTINGS2 $BASEDIR/$DATEFOLDERS/${PICID}_1.jpg
@@ -105,6 +113,9 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 		CAMNAME=$(ls /dev | grep video)
 
 		fswebcam -d /dev/$CAMNAME $SETTINGSBOTH $BASEDIR/$DATEFOLDERS/${PICID}.jpg
+	fi
+
+	if [ "$DEBUG" -gt 0 ]; then echo "Uploading to Box"
 	fi
 
 	# The following lines will upload the pictures automatically to cloud storage
