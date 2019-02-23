@@ -3,7 +3,7 @@
 echo "Renaming Files"
 /home/pi/picam/cam/img/renameFilesRolling12Hours.sh
 echo "Compiling Gif"
-yes | /home/pi/picam/cam/img/compileDirectoryIntoGif.sh rolling rolling.gif
+yes | /home/pi/picam/cam/img/compileFilesIntoGif.sh /home/pi/RbPics/rolling rolling.gif
 echo "Uploading Gif"
 /home/pi/picam/cam/img/uploadGif.sh rolling.gif 
 
