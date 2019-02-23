@@ -12,7 +12,7 @@ PICDIR=/home/pi/RbPics
 CAMERAEXTENSION=""
 
 # An iteration variable.
-for f in $( ls ~/RbPics/*/*/*.jpg | tail -n 144 ); do 
+for f in $( ls ~/RbPics/[0-9][0-9]/[0-9][0-9]/*.jpg | tail -n 144 ); do 
 	NAME=$(printf "%05d" ${ITER})
 	sudo cp "${f}" "$DIR/${NAME}.jpg"
 	ITER=$((ITER+1)) 
