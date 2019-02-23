@@ -6,19 +6,21 @@ else
 	HOURS=$1
 fi
 
-DIR="/home/pi/RbPics/rolling"
+DIR="$HOME/RbPics/rolling$HOURS"
 mkdir -p "$DIR"
+rm -f $DIR/*.jpg
 
 ITER=0
 
 # Set this to the directory containing the images to compile
 PICDIR=$HOME/RbPics
+PICDIR=$HOME
 # Leave this blank if only using one camera
 CAMERAEXTENSION=""
 
 # An iteration variable.
-for f in $( ls $PICDIR/*/*/*.jpg | tail -n $(( $HOURS * 12 )) ); do 
+for f in $( ls $PICDIR/02/14/*.jpg | tail -n $(( $HOURS * 12 )) ); do 
 	NAME=$(printf "%05d" ${ITER})
-	sudo cp "${f}" "$DIR/${NAME}.jpg"
+	cp "${f}" "$DIR/${NAME}.jpg"
 	ITER=$((ITER+1)) 
 done
