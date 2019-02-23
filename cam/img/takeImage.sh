@@ -15,7 +15,8 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	#Get the hour of the day for the same reason.
 	HOUR=$(date +"%H")
 
-	BASEDIR=/home/pi/RbPics
+	BASEDIR=$HOME/PiPics
+
 	DATEFOLDERS=${MONTH}/${DAY}
 
 	if [ "$DEBUG" -gt 0 ]; then echo "Date Obtained"
@@ -25,7 +26,7 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	# times the system has been powered on. This should prevent
 	# images from overwriting each other when the Pi is powered
 	# off without sudo shutdown.
-	declare -i STARTCOUNT=$(cat /home/pi/.startCount)
+	declare -i STARTCOUNT=$(cat $HOME/.startCount)
 	SCSTRING=$(printf "%04d" $STARTCOUNT)
 
 	# A unique ID for the picture that will comprise part of the filename.
@@ -97,8 +98,24 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	SH=25
 	SHARPSET="-s sharpness=$SH"
 
+	# Banner
+	# 
+	# There are a number of options for the banner. I think the
+	# most sensible options are to disable most of it. 
+	#
+	BANNERCOLOR="#FF000000"
+	LINECOLOR="#FF000000"
+	TITLETEXT="BANNERTEXT"
+	TITLE="--title $TITLETEXT"
+	TITLE=""
+	FONT="arial:30"
+	TIMESTAMP="--timestamp %Y-%m-%d %H:%M (%Z)"
+	TIMESTAMP="--no-timestamp"
+	BANNER="$TIMESTAMP --font ${FONT} --banner-colour ${BANNERCOLOR} --line-colour ${LINECOLOR} ${TITLE}"
+	BANNER="--no-banner"
+
 	ROTATE180="--rotate 180"
-	SETTINGSBOTH="-q -r 1280x720 --no-banner $FRAMESET $SKIPSET $BRIGHTSET $CONTRASTSET $SATSET $SHARPSET"
+	SETTINGSBOTH="-q -r 1280x720 $BANNER $FRAMESET $SKIPSET $BRIGHTSET $CONTRASTSET $SATSET $SHARPSET"
 	SETTINGS1="-d /dev/video0 $ROTATE180"
 	SETTINGS2="-d /dev/video1 $BRIGHTSET"
 
@@ -119,7 +136,7 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	fi
 
 	# The following lines will upload the pictures automatically to cloud storage
-	rclone copy $BASEDIR/$DATEFOLDERS unlbox:piCamPics/$DATEFOLDERS
+	#rclone copy $BASEDIR/$DATEFOLDERS unlbox:piCamPics/$DATEFOLDERS
 elif [ "$CAMCOUNT" -eq 0 ]; then 
 	echo "Error: camera not detected"
 fi
