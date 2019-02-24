@@ -12,6 +12,8 @@ For compiling timelapse photos into a video, you will need to install the follow
 
 To compile the photos into a video, take the following steps. First run the "renameFiles.sh" script after editing the file to appropriately indicate where the pictures are stored and where you want them to be saved. Then, run the "compileFilesIntoVideo.sh" script, again, after editing to appropriately direct things. 
 
+You can see some examples of the timelapse photos generated at ahrendsen.net
+
 # Motion detecting camera
 This function was intended to count the number of instances of motion in a very small region. I wanted to count the number of bubbles that went through an airlock in my brewing setup. I also hope to use it to capture images of lightning in the future. 
 
