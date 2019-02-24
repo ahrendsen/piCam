@@ -15,7 +15,7 @@ else
 	UPLOADFOLDER=$2
 fi
 
-VIDDIR=/home/pi/RbVideos
+VIDDIR=$HOME/PiVideos
 
 # The following lines will upload the video to cloud storage.
 rclone copy $VIDDIR/$VIDEONAME unlbox:piCamPics/$UPLOADFOLDER
