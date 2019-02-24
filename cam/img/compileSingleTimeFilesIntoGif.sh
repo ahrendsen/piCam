@@ -8,7 +8,7 @@ MONTH=$(date +"%m" --date='yesterday')
 DAY=$(date +"%d" --date='yesterday')
 TIME=08-35
 
-PICDIR=/home/pi/RbPics/${TIME}renamed
+PICDIR=$HOME/PiPics/${TIME}renamed
 # Directory where you want the video to be saved. Make sure it already exists. 
 GIFDIR=/home/pi/AutoGif
 mkdir -p "${GIFDIR}"

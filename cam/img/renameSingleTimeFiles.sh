@@ -5,7 +5,7 @@ DAY=$(date +"%d" --date='yesterday')
 TIME=08-35
 
 # Set this to the directory containing the images to compile
-PICDIR=/home/pi/RbPics
+PICDIR=$HOME/PiPics
 # Leave this blank if only using one camera
 CAMERAEXTENSION=""
 
