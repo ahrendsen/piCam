@@ -108,3 +108,25 @@ auto removing files and compiling videos through box,
 I think it best to reduce the frequency of pictures 
 to the previous value to see if that helps.
 
+2019/03/01:
+Downloading ALL of the pictures for compiling a video is
+possible, but impractical if you are doing a 
+so called "single time video" because you have
+to download 200 extra files for every one that you
+would use. 
+
+Thankfully, rclone has a filter command so that you
+can pull only the files with a specified pattern. 
+Here's an example of a command to pull all of the 
+files that correspond to noon.
+
+  rclone copy --include *12-00-*.jpg unlbox:piCamPics/
+
+The pattern after include could be modified to select
+any time, or to specify a month that the images should
+be pulled from as so:
+
+  rclone copy --include 02/*/*12-00-*.jpg unlbox:piCamPics/
+
+So it's probably important to note that the directory
+structure is <MONTH>/<DAY>/files.
