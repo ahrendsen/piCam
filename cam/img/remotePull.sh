@@ -30,15 +30,16 @@ for n in $(seq $DAYSBEFORE -1 1); do
 	MONTH=$(date +"%m" --date="$n day ago $DATE 00:00")
 	DAY=$(date +"%d" --date="$n day ago $DATE 00:00")
 
-	rclone copy --include *${TIME}.jpg unlbox:piCamPics/$MONTH/$DAY $DIRECTORY
+	mkdir -p "$DIRECTORY/$MONTH/$DAY"
 
+	rclone copy --include *${TIME}.jpg unlbox:piCamPics/$MONTH/$DAY $DIRECTORY/$MONTH/$DAY
+done
 	# Set this to the directory containing the images to compile
 	PICDIR=$DIRECTORY
 	# Leave this blank if only using one camera
 	CAMERAEXTENSION=""
-done
 
-for f in ${PICDIR}/*_*-*[05]-*${CAMERAEXTENSION}.jpg; do 
+for f in ${PICDIR}/*/*/*_*-*[05]-*${CAMERAEXTENSION}.jpg; do 
 	NAME=$(printf "%05d" ${ITER})
 	cp "${f}" "$DIR/${NAME}.jpg"
 	ITER=$((ITER+1)) 
