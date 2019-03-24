@@ -19,10 +19,18 @@
 # 
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
-#
-#   Make sure to replace the path below with the path to the 
-#   takeImage.sh script on your system.
-#
-#
 # m h  dom mon dow   command
-0 * * * * sudo bash /home/pi/piCam/cam/img/takeImage.sh
+
+# Prevents messages from being sent every time the crontab runs
+MAILTO=""
+
+*/5 * * * * /home/pi/picam/cam/img/takeImage.sh
+#* * * * * sleep 30; /home/pi/picam/cam/img/takeImage.sh
+
+*/30 * * * * /home/pi/picam/cam/img/processRolling12Hours.sh
+*/5 * * * * sleep 30; /home/pi/picam/cam/img/processRolling1Hour.sh
+0 2 * * * /home/pi/picam/cam/img/renameFiles.sh
+10 2 * * * /home/pi/picam/cam/img/compileFilesIntoVideo.sh
+20 2 * * * /home/pi/picam/cam/img/uploadVideo.sh
+30 2 * * * /home/pi/picam/cam/img/compileFilesIntoGif.sh
+40 2 * * * /home/pi/picam/cam/img/uploadGif.sh
