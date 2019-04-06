@@ -4,6 +4,9 @@ sudo apt-get install emacs
 sudo apt-get install git
 sudo apt-get install ssmtp # For email sending (not sure if I need both mutt and ssmtp)
 sudo apt-get install mutt # For email sending
+sudo apt-get install sendmail # For... also sending mail? (found errors in log 
+                              # file that a program was trying to run this 
+                              # program.)
 sudo apt-get install gpgsm # For ???
 sudo apt-get install libav-tools # For video compilation (avconv)
 sudo apt-get install ffmpeg # For gif compilation (ffmpeg)
