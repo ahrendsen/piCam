@@ -130,3 +130,10 @@ be pulled from as so:
 
 So it's probably important to note that the directory
 structure is <MONTH>/<DAY>/files.
+
+2019-04-11:
+Switching the image recording so that it just takes 
+one picture instead of averaging like 6. Hopeful that this 
+will reduce the times that the camera fails.
+
+Reduced frame count to 1 and the skip count to 10.

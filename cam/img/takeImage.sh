@@ -51,7 +51,7 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	# For applications that take images infrequently (every minute),
 	# a large number (around 20) will be best. For more frequent picture
 	# taking, a value of 4 or so will do.
-	SKIPCOUNT=20
+	SKIPCOUNT=10
 	SKIPSET="-S $SKIPCOUNT"
 
 	# The number of frames to grab to compose the image
@@ -62,7 +62,7 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	# images, I have decided that 5-6 images gives a 
 	# noticeable reduction in noise, and anything more than
 	# that is difficult to notice the difference.
-	FRAMECOUNT=6
+	FRAMECOUNT=1
 	FRAMESET="-F $FRAMECOUNT"
 
 	# If the camera is set up in a controlled environment, you 
