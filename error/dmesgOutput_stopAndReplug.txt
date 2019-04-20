@@ -1,0 +1,200 @@
+[562656.940540] hid-generic 0003:0E6A:6001.0004: input,hidraw1: USB HID v1.10 Device [HID Keyboard Device] on usb-20980000.usb-1.3/input1
+[692641.022652] usb 1-1.3: USB disconnect, device number 15
+[692644.999363] usb 1-1.3: new low-speed USB device number 16 using dwc_otg
+[692645.151064] usb 1-1.3: New USB device found, idVendor=413c, idProduct=2003
+[692645.151092] usb 1-1.3: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[692645.151105] usb 1-1.3: Product: Dell USB Keyboard
+[692645.151115] usb 1-1.3: Manufacturer: Dell
+[692645.181115] input: Dell Dell USB Keyboard as /devices/platform/soc/20980000.usb/usb1/1-1/1-1.3/1-1.3:1.0/0003:413C:2003.0005/input/input7
+[692645.251451] hid-generic 0003:413C:2003.0005: input,hidraw0: USB HID v1.10 Keyboard [Dell Dell USB Keyboard] on usb-20980000.usb-1.3/input0
+[767177.571835] uvcvideo: Failed to resubmit video URB (-1).
+[863481.239242] usb usb1-port1: disabled by hub (EMI?), re-enabling...
+[863481.239293] usb 1-1: USB disconnect, device number 6
+[863481.239310] usb 1-1.1: USB disconnect, device number 7
+[863481.240204] smsc95xx 1-1.1:1.0 eth0: unregister 'smsc95xx' usb-20980000.usb-1.1, smsc95xx USB 2.0 Ethernet
+[863481.240287] smsc95xx 1-1.1:1.0 eth0: hardware isn't capable of remote wakeup
+[863481.259620] usb 1-1.2: USB disconnect, device number 14
+[863481.271316] usb 1-1.3: USB disconnect, device number 16
+[863481.354303] ------------[ cut here ]------------
+[863481.354368] WARNING: CPU: 0 PID: 7753 at fs/sysfs/group.c:237 sysfs_remove_group+0x98/0xa4
+[863481.354377] sysfs group 'power' not found for kobject 'event1'
+[863481.354384] Modules linked in: joydev cfg80211 rfkill evdev uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev snd_usb_audio snd_hwdep media snd_usbmidi_lib snd_rawmidi snd_seq_device snd_bcm2835(C) snd_pcm snd_timer snd uio_pdrv_genirq uio fixed ip_tables x_tables ipv6
+[863481.354511] CPU: 0 PID: 7753 Comm: fswebcam Tainted: G        WC      4.14.79+ #1159
+[863481.354519] Hardware name: BCM2835
+[863481.354582] [<c0016420>] (unwind_backtrace) from [<c0013d40>] (show_stack+0x20/0x24)
+[863481.354619] [<c0013d40>] (show_stack) from [<c0634c44>] (dump_stack+0x20/0x28)
+[863481.354651] [<c0634c44>] (dump_stack) from [<c0021ecc>] (__warn+0xe4/0x10c)
+[863481.354674] [<c0021ecc>] (__warn) from [<c0021f3c>] (warn_slowpath_fmt+0x48/0x50)
+[863481.354700] [<c0021f3c>] (warn_slowpath_fmt) from [<c01d3620>] (sysfs_remove_group+0x98/0xa4)
+[863481.354727] [<c01d3620>] (sysfs_remove_group) from [<c040b3d4>] (dpm_sysfs_remove+0x58/0x60)
+[863481.354765] [<c040b3d4>] (dpm_sysfs_remove) from [<c03ff1a8>] (device_del+0x11c/0x310)
+[863481.354792] [<c03ff1a8>] (device_del) from [<c015eee0>] (cdev_device_del+0x24/0x3c)
+[863481.354841] [<c015eee0>] (cdev_device_del) from [<bf1e01a4>] (evdev_disconnect+0x2c/0x58 [evdev])
+[863481.354880] [<bf1e01a4>] (evdev_disconnect [evdev]) from [<c04a6430>] (__input_unregister_device+0xa4/0x148)
+[863481.354903] [<c04a6430>] (__input_unregister_device) from [<c04a6c94>] (input_unregister_device+0x50/0x84)
+[863481.355026] [<c04a6c94>] (input_unregister_device) from [<bf1cfdc0>] (uvc_status_cleanup+0x40/0x44 [uvcvideo])
+[863481.355149] [<bf1cfdc0>] (uvc_status_cleanup [uvcvideo]) from [<bf1c5324>] (uvc_delete+0x24/0x144 [uvcvideo])
+[863481.355254] [<bf1c5324>] (uvc_delete [uvcvideo]) from [<bf1c54e8>] (uvc_release+0x44/0x48 [uvcvideo])
+[863481.355676] [<bf1c54e8>] (uvc_release [uvcvideo]) from [<bf16b76c>] (v4l2_device_release+0xcc/0xf4 [videodev])
+[863481.355935] [<bf16b76c>] (v4l2_device_release [videodev]) from [<c03fde28>] (device_release+0x3c/0xa0)
+[863481.355964] [<c03fde28>] (device_release) from [<c0638cbc>] (kobject_put+0x8c/0xec)
+[863481.355986] [<c0638cbc>] (kobject_put) from [<c03fe19c>] (put_device+0x24/0x28)
+[863481.356231] [<c03fe19c>] (put_device) from [<bf16b480>] (v4l2_release+0x60/0x88 [videodev])
+[863481.356492] [<bf16b480>] (v4l2_release [videodev]) from [<c015c134>] (__fput+0x9c/0x1dc)
+[863481.356518] [<c015c134>] (__fput) from [<c015c2dc>] (____fput+0x18/0x1c)
+[863481.356549] [<c015c2dc>] (____fput) from [<c003d68c>] (task_work_run+0x90/0xbc)
+[863481.356582] [<c003d68c>] (task_work_run) from [<c0013440>] (do_work_pending+0xe0/0xe4)
+[863481.356610] [<c0013440>] (do_work_pending) from [<c000fdb4>] (slow_work_pending+0xc/0x20)
+[863481.356628] ---[ end trace b12ba58fc8e6382e ]---
+[863481.366389] ------------[ cut here ]------------
+[863481.366448] WARNING: CPU: 0 PID: 7753 at fs/sysfs/group.c:237 sysfs_remove_group+0x98/0xa4
+[863481.366457] sysfs group 'power' not found for kobject 'input4'
+[863481.366466] Modules linked in: joydev cfg80211 rfkill evdev uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev snd_usb_audio snd_hwdep media snd_usbmidi_lib snd_rawmidi snd_seq_device snd_bcm2835(C) snd_pcm snd_timer snd uio_pdrv_genirq uio fixed ip_tables x_tables ipv6
+[863481.366699] CPU: 0 PID: 7753 Comm: fswebcam Tainted: G        WC      4.14.79+ #1159
+[863481.366705] Hardware name: BCM2835
+[863481.366772] [<c0016420>] (unwind_backtrace) from [<c0013d40>] (show_stack+0x20/0x24)
+[863481.366810] [<c0013d40>] (show_stack) from [<c0634c44>] (dump_stack+0x20/0x28)
+[863481.366844] [<c0634c44>] (dump_stack) from [<c0021ecc>] (__warn+0xe4/0x10c)
+[863481.366868] [<c0021ecc>] (__warn) from [<c0021f3c>] (warn_slowpath_fmt+0x48/0x50)
+[863481.366893] [<c0021f3c>] (warn_slowpath_fmt) from [<c01d3620>] (sysfs_remove_group+0x98/0xa4)
+[863481.366923] [<c01d3620>] (sysfs_remove_group) from [<c040b3d4>] (dpm_sysfs_remove+0x58/0x60)
+[863481.366959] [<c040b3d4>] (dpm_sysfs_remove) from [<c03ff1a8>] (device_del+0x11c/0x310)
+[863481.366986] [<c03ff1a8>] (device_del) from [<c04a64ac>] (__input_unregister_device+0x120/0x148)
+[863481.367007] [<c04a64ac>] (__input_unregister_device) from [<c04a6c94>] (input_unregister_device+0x50/0x84)
+[863481.367138] [<c04a6c94>] (input_unregister_device) from [<bf1cfdc0>] (uvc_status_cleanup+0x40/0x44 [uvcvideo])
+[863481.367259] [<bf1cfdc0>] (uvc_status_cleanup [uvcvideo]) from [<bf1c5324>] (uvc_delete+0x24/0x144 [uvcvideo])
+[863481.367369] [<bf1c5324>] (uvc_delete [uvcvideo]) from [<bf1c54e8>] (uvc_release+0x44/0x48 [uvcvideo])
+[863481.367791] [<bf1c54e8>] (uvc_release [uvcvideo]) from [<bf16b76c>] (v4l2_device_release+0xcc/0xf4 [videodev])
+[863481.368050] [<bf16b76c>] (v4l2_device_release [videodev]) from [<c03fde28>] (device_release+0x3c/0xa0)
+[863481.368076] [<c03fde28>] (device_release) from [<c0638cbc>] (kobject_put+0x8c/0xec)
+[863481.368100] [<c0638cbc>] (kobject_put) from [<c03fe19c>] (put_device+0x24/0x28)
+[863481.368340] [<c03fe19c>] (put_device) from [<bf16b480>] (v4l2_release+0x60/0x88 [videodev])
+[863481.368604] [<bf16b480>] (v4l2_release [videodev]) from [<c015c134>] (__fput+0x9c/0x1dc)
+[863481.368632] [<c015c134>] (__fput) from [<c015c2dc>] (____fput+0x18/0x1c)
+[863481.368666] [<c015c2dc>] (____fput) from [<c003d68c>] (task_work_run+0x90/0xbc)
+[863481.368705] [<c003d68c>] (task_work_run) from [<c0013440>] (do_work_pending+0xe0/0xe4)
+[863481.368732] [<c0013440>] (do_work_pending) from [<c000fdb4>] (slow_work_pending+0xc/0x20)
+[863481.368742] ---[ end trace b12ba58fc8e6382f ]---
+[863481.370566] ------------[ cut here ]------------
+[863481.370626] WARNING: CPU: 0 PID: 7753 at fs/sysfs/group.c:237 sysfs_remove_group+0x98/0xa4
+[863481.370638] sysfs group 'id' not found for kobject 'input4'
+[863481.370644] Modules linked in: joydev cfg80211 rfkill evdev uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev snd_usb_audio snd_hwdep media snd_usbmidi_lib snd_rawmidi snd_seq_device snd_bcm2835(C) snd_pcm snd_timer snd uio_pdrv_genirq uio fixed ip_tables x_tables ipv6
+[863481.370782] CPU: 0 PID: 7753 Comm: fswebcam Tainted: G        WC      4.14.79+ #1159
+[863481.370787] Hardware name: BCM2835
+[863481.370849] [<c0016420>] (unwind_backtrace) from [<c0013d40>] (show_stack+0x20/0x24)
+[863481.370887] [<c0013d40>] (show_stack) from [<c0634c44>] (dump_stack+0x20/0x28)
+[863481.370920] [<c0634c44>] (dump_stack) from [<c0021ecc>] (__warn+0xe4/0x10c)
+[863481.370941] [<c0021ecc>] (__warn) from [<c0021f3c>] (warn_slowpath_fmt+0x48/0x50)
+[863481.370968] [<c0021f3c>] (warn_slowpath_fmt) from [<c01d3620>] (sysfs_remove_group+0x98/0xa4)
+[863481.370991] [<c01d3620>] (sysfs_remove_group) from [<c01d3660>] (sysfs_remove_groups+0x34/0x44)
+[863481.371025] [<c01d3660>] (sysfs_remove_groups) from [<c03fdd50>] (device_remove_attrs+0x60/0x7c)
+[863481.371053] [<c03fdd50>] (device_remove_attrs) from [<c03ff270>] (device_del+0x1e4/0x310)
+[863481.371077] [<c03ff270>] (device_del) from [<c04a64ac>] (__input_unregister_device+0x120/0x148)
+[863481.371100] [<c04a64ac>] (__input_unregister_device) from [<c04a6c94>] (input_unregister_device+0x50/0x84)
+[863481.371235] [<c04a6c94>] (input_unregister_device) from [<bf1cfdc0>] (uvc_status_cleanup+0x40/0x44 [uvcvideo])
+[863481.371357] [<bf1cfdc0>] (uvc_status_cleanup [uvcvideo]) from [<bf1c5324>] (uvc_delete+0x24/0x144 [uvcvideo])
+[863481.371465] [<bf1c5324>] (uvc_delete [uvcvideo]) from [<bf1c54e8>] (uvc_release+0x44/0x48 [uvcvideo])
+[863481.371894] [<bf1c54e8>] (uvc_release [uvcvideo]) from [<bf16b76c>] (v4l2_device_release+0xcc/0xf4 [videodev])
+[863481.372153] [<bf16b76c>] (v4l2_device_release [videodev]) from [<c03fde28>] (device_release+0x3c/0xa0)
+[863481.372337] [<c03fde28>] (device_release) from [<c0638cbc>] (kobject_put+0x8c/0xec)
+[863481.372366] [<c0638cbc>] (kobject_put) from [<c03fe19c>] (put_device+0x24/0x28)
+[863481.372631] [<c03fe19c>] (put_device) from [<bf16b480>] (v4l2_release+0x60/0x88 [videodev])
+[863481.372898] [<bf16b480>] (v4l2_release [videodev]) from [<c015c134>] (__fput+0x9c/0x1dc)
+[863481.372926] [<c015c134>] (__fput) from [<c015c2dc>] (____fput+0x18/0x1c)
+[863481.372960] [<c015c2dc>] (____fput) from [<c003d68c>] (task_work_run+0x90/0xbc)
+[863481.373001] [<c003d68c>] (task_work_run) from [<c0013440>] (do_work_pending+0xe0/0xe4)
+[863481.373026] [<c0013440>] (do_work_pending) from [<c000fdb4>] (slow_work_pending+0xc/0x20)
+[863481.373038] ---[ end trace b12ba58fc8e63830 ]---
+[863481.379877] ------------[ cut here ]------------
+[863481.379942] WARNING: CPU: 0 PID: 7753 at fs/sysfs/group.c:237 sysfs_remove_group+0x98/0xa4
+[863481.379954] sysfs group 'capabilities' not found for kobject 'input4'
+[863481.379960] Modules linked in: joydev cfg80211 rfkill evdev uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev snd_usb_audio snd_hwdep media snd_usbmidi_lib snd_rawmidi snd_seq_device snd_bcm2835(C) snd_pcm snd_timer snd uio_pdrv_genirq uio fixed ip_tables x_tables ipv6
+[863481.380094] CPU: 0 PID: 7753 Comm: fswebcam Tainted: G        WC      4.14.79+ #1159
+[863481.380102] Hardware name: BCM2835
+[863481.380168] [<c0016420>] (unwind_backtrace) from [<c0013d40>] (show_stack+0x20/0x24)
+[863481.380205] [<c0013d40>] (show_stack) from [<c0634c44>] (dump_stack+0x20/0x28)
+[863481.380328] [<c0634c44>] (dump_stack) from [<c0021ecc>] (__warn+0xe4/0x10c)
+[863481.380355] [<c0021ecc>] (__warn) from [<c0021f3c>] (warn_slowpath_fmt+0x48/0x50)
+[863481.380382] [<c0021f3c>] (warn_slowpath_fmt) from [<c01d3620>] (sysfs_remove_group+0x98/0xa4)
+[863481.380404] [<c01d3620>] (sysfs_remove_group) from [<c01d3660>] (sysfs_remove_groups+0x34/0x44)
+[863481.380438] [<c01d3660>] (sysfs_remove_groups) from [<c03fdd50>] (device_remove_attrs+0x60/0x7c)
+[863481.380465] [<c03fdd50>] (device_remove_attrs) from [<c03ff270>] (device_del+0x1e4/0x310)
+[863481.380489] [<c03ff270>] (device_del) from [<c04a64ac>] (__input_unregister_device+0x120/0x148)
+[863481.380510] [<c04a64ac>] (__input_unregister_device) from [<c04a6c94>] (input_unregister_device+0x50/0x84)
+[863481.380642] [<c04a6c94>] (input_unregister_device) from [<bf1cfdc0>] (uvc_status_cleanup+0x40/0x44 [uvcvideo])
+[863481.380764] [<bf1cfdc0>] (uvc_status_cleanup [uvcvideo]) from [<bf1c5324>] (uvc_delete+0x24/0x144 [uvcvideo])
+[863481.380869] [<bf1c5324>] (uvc_delete [uvcvideo]) from [<bf1c54e8>] (uvc_release+0x44/0x48 [uvcvideo])
+[863481.381294] [<bf1c54e8>] (uvc_release [uvcvideo]) from [<bf16b76c>] (v4l2_device_release+0xcc/0xf4 [videodev])
+[863481.381555] [<bf16b76c>] (v4l2_device_release [videodev]) from [<c03fde28>] (device_release+0x3c/0xa0)
+[863481.381583] [<c03fde28>] (device_release) from [<c0638cbc>] (kobject_put+0x8c/0xec)
+[863481.381604] [<c0638cbc>] (kobject_put) from [<c03fe19c>] (put_device+0x24/0x28)
+[863481.381848] [<c03fe19c>] (put_device) from [<bf16b480>] (v4l2_release+0x60/0x88 [videodev])
+[863481.382111] [<bf16b480>] (v4l2_release [videodev]) from [<c015c134>] (__fput+0x9c/0x1dc)
+[863481.382141] [<c015c134>] (__fput) from [<c015c2dc>] (____fput+0x18/0x1c)
+[863481.382175] [<c015c2dc>] (____fput) from [<c003d68c>] (task_work_run+0x90/0xbc)
+[863481.382218] [<c003d68c>] (task_work_run) from [<c0013440>] (do_work_pending+0xe0/0xe4)
+[863481.382242] [<c0013440>] (do_work_pending) from [<c000fdb4>] (slow_work_pending+0xc/0x20)
+[863481.382255] ---[ end trace b12ba58fc8e63831 ]---
+[863481.389343] ------------[ cut here ]------------
+[863481.389400] WARNING: CPU: 0 PID: 7753 at fs/sysfs/group.c:237 sysfs_remove_group+0x98/0xa4
+[863481.389410] sysfs group 'power' not found for kobject 'media0'
+[863481.389417] Modules linked in: joydev cfg80211 rfkill evdev uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev snd_usb_audio snd_hwdep media snd_usbmidi_lib snd_rawmidi snd_seq_device snd_bcm2835(C) snd_pcm snd_timer snd uio_pdrv_genirq uio fixed ip_tables x_tables ipv6
+[863481.389549] CPU: 0 PID: 7753 Comm: fswebcam Tainted: G        WC      4.14.79+ #1159
+[863481.389554] Hardware name: BCM2835
+[863481.389619] [<c0016420>] (unwind_backtrace) from [<c0013d40>] (show_stack+0x20/0x24)
+[863481.389654] [<c0013d40>] (show_stack) from [<c0634c44>] (dump_stack+0x20/0x28)
+[863481.389686] [<c0634c44>] (dump_stack) from [<c0021ecc>] (__warn+0xe4/0x10c)
+[863481.389709] [<c0021ecc>] (__warn) from [<c0021f3c>] (warn_slowpath_fmt+0x48/0x50)
+[863481.389735] [<c0021f3c>] (warn_slowpath_fmt) from [<c01d3620>] (sysfs_remove_group+0x98/0xa4)
+[863481.389761] [<c01d3620>] (sysfs_remove_group) from [<c040b3d4>] (dpm_sysfs_remove+0x58/0x60)
+[863481.389799] [<c040b3d4>] (dpm_sysfs_remove) from [<c03ff1a8>] (device_del+0x11c/0x310)
+[863481.389824] [<c03ff1a8>] (device_del) from [<c015eee0>] (cdev_device_del+0x24/0x3c)
+[863481.389925] [<c015eee0>] (cdev_device_del) from [<bf1248d4>] (media_devnode_unregister+0x34/0x54 [media])
+[863481.390028] [<bf1248d4>] (media_devnode_unregister [media]) from [<bf124300>] (media_device_unregister+0x11c/0x138 [media])
+[863481.390170] [<bf124300>] (media_device_unregister [media]) from [<bf1c5374>] (uvc_delete+0x74/0x144 [uvcvideo])
+[863481.390276] [<bf1c5374>] (uvc_delete [uvcvideo]) from [<bf1c54e8>] (uvc_release+0x44/0x48 [uvcvideo])
+[863481.390653] [<bf1c54e8>] (uvc_release [uvcvideo]) from [<bf16b76c>] (v4l2_device_release+0xcc/0xf4 [videodev])
+[863481.390883] [<bf16b76c>] (v4l2_device_release [videodev]) from [<c03fde28>] (device_release+0x3c/0xa0)
+[863481.390910] [<c03fde28>] (device_release) from [<c0638cbc>] (kobject_put+0x8c/0xec)
+[863481.390930] [<c0638cbc>] (kobject_put) from [<c03fe19c>] (put_device+0x24/0x28)
+[863481.391146] [<c03fe19c>] (put_device) from [<bf16b480>] (v4l2_release+0x60/0x88 [videodev])
+[863481.391381] [<bf16b480>] (v4l2_release [videodev]) from [<c015c134>] (__fput+0x9c/0x1dc)
+[863481.391407] [<c015c134>] (__fput) from [<c015c2dc>] (____fput+0x18/0x1c)
+[863481.391437] [<c015c2dc>] (____fput) from [<c003d68c>] (task_work_run+0x90/0xbc)
+[863481.391474] [<c003d68c>] (task_work_run) from [<c0013440>] (do_work_pending+0xe0/0xe4)
+[863481.391496] [<c0013440>] (do_work_pending) from [<c000fdb4>] (slow_work_pending+0xc/0x20)
+[863481.391506] ---[ end trace b12ba58fc8e63832 ]---
+[863481.509252] Indeed it is in host mode hprt0 = 00001501
+[863481.949045] usb 1-1: new high-speed USB device number 17 using dwc_otg
+[863481.949333] Indeed it is in host mode hprt0 = 00001101
+[863482.499613] usb 1-1: New USB device found, idVendor=0424, idProduct=9514
+[863482.499669] usb 1-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[863482.501158] hub 1-1:1.0: USB hub found
+[863482.501346] hub 1-1:1.0: 5 ports detected
+[863482.839085] usb 1-1.1: new high-speed USB device number 18 using dwc_otg
+[863482.969671] usb 1-1.1: New USB device found, idVendor=0424, idProduct=ec00
+[863482.969701] usb 1-1.1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[863482.977095] smsc95xx v1.0.6
+[863483.104593] smsc95xx 1-1.1:1.0 eth0: register 'smsc95xx' at usb-20980000.usb-1.1, smsc95xx USB 2.0 Ethernet, b8:27:eb:96:ae:7d
+[863483.199126] usb 1-1.3: new low-speed USB device number 19 using dwc_otg
+[863483.350591] usb 1-1.3: New USB device found, idVendor=413c, idProduct=2003
+[863483.350620] usb 1-1.3: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[863483.350636] usb 1-1.3: Product: Dell USB Keyboard
+[863483.350646] usb 1-1.3: Manufacturer: Dell
+[863483.367775] input: Dell Dell USB Keyboard as /devices/platform/soc/20980000.usb/usb1/1-1/1-1.3/1-1.3:1.0/0003:413C:2003.0006/input/input8
+[863483.430837] hid-generic 0003:413C:2003.0006: input,hidraw0: USB HID v1.10 Keyboard [Dell Dell USB Keyboard] on usb-20980000.usb-1.3/input0
+[863484.890412] smsc95xx 1-1.1:1.0 eth0: hardware isn't capable of remote wakeup
+[863484.891466] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+[863486.503079] smsc95xx 1-1.1:1.0 eth0: link up, 100Mbps, full-duplex, lpa 0x45E1
+[863486.507444] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+[866799.266797] usb 1-1.2: new high-speed USB device number 20 using dwc_otg
+[866799.413699] usb 1-1.2: New USB device found, idVendor=045e, idProduct=0779
+[866799.413727] usb 1-1.2: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[866799.413741] usb 1-1.2: Product: Microsoft® LifeCam HD-3000
+[866799.413753] usb 1-1.2: Manufacturer: Microsoft
+[866799.432463] uvcvideo: Found UVC 1.00 device Microsoft® LifeCam HD-3000 (045e:0779)
+[866799.439259] uvcvideo 1-1.2:1.0: Entity type for entity Extension 5 was not initialized!
+[866799.439291] uvcvideo 1-1.2:1.0: Entity type for entity Processing 4 was not initialized!
+[866799.439308] uvcvideo 1-1.2:1.0: Entity type for entity Selector 3 was not initialized!
+[866799.439325] uvcvideo 1-1.2:1.0: Entity type for entity Camera 1 was not initialized!
+[866799.440097] input: Microsoft® LifeCam HD-3000: Mi as /devices/platform/soc/20980000.usb/usb1/1-1/1-1.2/1-1.2:1.0/input/input9
