@@ -18,7 +18,7 @@ PICDIR=$HOME/PiPics
 CAMERAEXTENSION=""
 
 # An iteration variable.
-for f in $( ls $PICDIR/[0-9][0-9]/[0-9][0-9]/*.jpg | tail -n $(( $HOURS * 12 )) ); do 
+for f in $( ls $PICDIR/[0-9][0-9]/[0-9][0-9]/*_[0-9][0-9]-[0-9][05]-[0-9][0-9].jpg | tail -n $(( $HOURS * 12 )) ); do 
 	NAME=$(printf "%05d" ${ITER})
 	cp "${f}" "$DIR/${NAME}.jpg"
 	ITER=$((ITER+1))
