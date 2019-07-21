@@ -11,7 +11,7 @@ fi
 
 MONTH=$(date +"%m" --date=$DATE)
 DAY=$(date +"%d" --date=$DATE)
-DIR="/home/pi/RbPics/$MONTH/weekBefore$DAY"
+DIR="$HOME/PiPics/$MONTH/weekBefore$DAY"
 mkdir -p "$DIR"
 
 ITER=0
@@ -20,7 +20,7 @@ for n in $(seq 7 -1 1); do
 	DAY=$(date +"%d" --date="$n day ago $DATE 00:00")
 
 	# Set this to the directory containing the images to compile
-	PICDIR=/home/pi/RbPics/$MONTH/$DAY
+	PICDIR=$HOME/PiPics/$MONTH/$DAY
 	# Leave this blank if only using one camera
 	CAMERAEXTENSION=""
 

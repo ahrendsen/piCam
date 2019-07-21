@@ -51,7 +51,7 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	# For applications that take images infrequently (every minute),
 	# a large number (around 20) will be best. For more frequent picture
 	# taking, a value of 4 or so will do.
-	SKIPCOUNT=20
+	SKIPCOUNT=10
 	SKIPSET="-S $SKIPCOUNT"
 
 	# The number of frames to grab to compose the image
@@ -62,7 +62,7 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	# images, I have decided that 5-6 images gives a 
 	# noticeable reduction in noise, and anything more than
 	# that is difficult to notice the difference.
-	FRAMECOUNT=6
+	FRAMECOUNT=1
 	FRAMESET="-F $FRAMECOUNT"
 
 	# If the camera is set up in a controlled environment, you 
@@ -108,11 +108,11 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	TITLETEXT="BANNERTEXT"
 	TITLE="--title $TITLETEXT"
 	TITLE=""
-	FONT="arial:30"
-	TIMESTAMP="--timestamp %Y-%m-%d %H:%M (%Z)"
+	FONT="arial:25"
 	TIMESTAMP="--no-timestamp"
-	BANNER="$TIMESTAMP --font ${FONT} --banner-colour ${BANNERCOLOR} --line-colour ${LINECOLOR} ${TITLE}"
+	TIMESTAMP="--timestamp %Y-%m-%d_%H:%M_(%Z)"
 	BANNER="--no-banner"
+	BANNER="${TIMESTAMP} --font ${FONT} --banner-colour ${BANNERCOLOR} --line-colour ${LINECOLOR} ${TITLE}"
 
 	ROTATE180="--rotate 180"
 	SETTINGSBOTH="-q -r 1280x720 $BANNER $FRAMESET $SKIPSET $BRIGHTSET $CONTRASTSET $SATSET $SHARPSET"
@@ -136,7 +136,7 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	fi
 
 	# The following lines will upload the pictures automatically to cloud storage
-	#rclone copy $BASEDIR/$DATEFOLDERS unlbox:piCamPics/$DATEFOLDERS
+	rclone copy $BASEDIR/$DATEFOLDERS unlbox:piCamPics/$DATEFOLDERS
 elif [ "$CAMCOUNT" -eq 0 ]; then 
 	echo "Error: camera not detected"
 fi

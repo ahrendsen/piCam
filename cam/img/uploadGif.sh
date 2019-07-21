@@ -17,7 +17,7 @@ else
 	UPLOADFOLDER=$2
 fi
 
-GIFDIR=/home/pi/AutoGif
+GIFDIR=$HOME/AutoGif
 
 # The following lines will upload the gif to cloud storage.
 rclone copy $GIFDIR/$GIFNAME unlbox:piCamPics/$UPLOADFOLDER

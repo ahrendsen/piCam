@@ -12,7 +12,7 @@ if [ $# -lt 2 ]; then
 	# Set the directory where your pictures are stored.
 	MONTH=$(date +"%m" --date=$DATE)
 	DAY=$(date +"%d" --date=$DATE)
-	DIR=$HOME/$MONTH/$DAY
+	DIR=$HOME/PiPics/$MONTH/$DAY/renamed
 
 	#VIDEO OPTIONS
 	FRAMERATE=30
