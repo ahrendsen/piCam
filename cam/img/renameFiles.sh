@@ -12,7 +12,7 @@ MONTH=$(date +"%m" --date=$DATE)
 DAY=$(date +"%d" --date=$DATE)
 
 # Set this to the directory containing the images to compile
-PICDIR=/home/pi/PiPics/$MONTH/$DAY
+PICDIR=$HOME/PiPics/$MONTH/$DAY
 # Leave this blank if only using one camera
 CAMERAEXTENSION=""
 

@@ -24,11 +24,11 @@
 # Prevents messages from being sent every time the crontab runs
 MAILTO=""
 
-*/5 * * * * /home/pi/picam/cam/img/takeImage.sh
+#*/5 * * * * /home/pi/picam/cam/img/takeImage.sh
 #* * * * * sleep 30; /home/pi/picam/cam/img/takeImage.sh
 
-*/30 * * * * /home/pi/picam/cam/img/processRolling12Hours.sh
-*/5 * * * * sleep 30; /home/pi/picam/cam/img/processRolling1Hour.sh
+#*/30 * * * * /home/pi/picam/cam/img/processRolling12Hours.sh
+#*/5 * * * * sleep 30; /home/pi/picam/cam/img/processRolling1Hour.sh
 0 2 * * * /home/pi/picam/cam/img/renameFiles.sh
 10 2 * * * /home/pi/picam/cam/img/compileFilesIntoVideo.sh
 20 2 * * * /home/pi/picam/cam/img/uploadVideo.sh
