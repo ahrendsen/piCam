@@ -25,4 +25,4 @@ fi
 VIDDIR=$HOME/PiVideos
 mkdir -p "${VIDDIR}"
 
-sudo avconv -f image2 -r $FRAMERATEIN -i ${PICDIR}/%05d.jpg -vf scale=480:270 -b:v 1M -r:v $FRAMERATEOUT -c:v mpeg4 -qp 0 -preset veryslow -an "${VIDDIR}/${VIDEONAME}"
+sudo ffmpeg -f image2 -r $FRAMERATEIN -i ${PICDIR}/%05d.jpg -vf scale=480:270 -b:v 1M -r:v $FRAMERATEOUT -c:v mpeg4 -qp 0 -preset veryslow -an "${VIDDIR}/${VIDEONAME}"
