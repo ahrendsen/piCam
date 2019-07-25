@@ -26,7 +26,7 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 	# times the system has been powered on. This should prevent
 	# images from overwriting each other when the Pi is powered
 	# off without sudo shutdown.
-	declare -i STARTCOUNT=$(cat $HOME/.startCount)
+	declare -i STARTCOUNT=0
 	SCSTRING=$(printf "%04d" $STARTCOUNT)
 
 	# A unique ID for the picture that will comprise part of the filename.
@@ -131,12 +131,4 @@ if [ "$CAMCOUNT" -gt 0 ]; then
 
 		fswebcam -d /dev/$CAMNAME $SETTINGSBOTH $BASEDIR/$DATEFOLDERS/${PICID}.jpg
 	fi
-
-	if [ "$DEBUG" -gt 0 ]; then echo "Uploading to Box"
-	fi
-
-	# The following lines will upload the pictures automatically to cloud storage
-	rclone copy $BASEDIR/$DATEFOLDERS unlbox:piCamPics/$DATEFOLDERS
 elif [ "$CAMCOUNT" -eq 0 ]; then 
-	echo "Error: camera not detected"
-fi
